@@ -5,7 +5,7 @@ import { db } from "./db.js";
 const typeDefs = `#graphql
 
     type product{
-    id:ID,
+    id:ID!,
     name:String,
     image:String,
     descriptions:String,
@@ -18,12 +18,17 @@ const typeDefs = `#graphql
 
     type Query {
         products:[product]
+        product(productId:ID!):product
     }
     `;
 
 const resolvers = {
   Query: {
     products: () => db.products,
+    product: (parent: any, args: { productId: string }, context: any) => {
+      const result = db.products.find((pd) => pd.id === args.productId);
+      return result;
+    },
   },
 };
 
