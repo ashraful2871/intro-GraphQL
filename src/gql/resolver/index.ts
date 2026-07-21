@@ -21,4 +21,10 @@ export const resolvers = {
       );
     },
   },
+  Category: {
+    products: ({ id }: { id: string }, args: any, context: any) => {
+      //   console.log(id);
+      return db.products.filter((product) => product.categoryId === id);
+    },
+  },
 };
