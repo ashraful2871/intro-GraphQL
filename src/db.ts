@@ -347,4 +347,5 @@ const reviews = [
 
 export const db = {
   products,
+  categories,
 };

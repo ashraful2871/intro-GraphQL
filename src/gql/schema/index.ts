@@ -12,8 +12,15 @@ export const typeDefs = `#graphql
 
     }
 
+    type category {
+    id:ID!,
+    name: String
+    }
+
     type Query {
         products:[product]
         product(productId:ID!):product
+        categories:[category]
+        category(categoryId:ID!):category
     }
     `;
